@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import formatCurrency from "../util";
 
 export default class Cart extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showCheckout: false,
+    };
+  }
+
   render() {
     const cartItems = this.props.cartItems;
     return (
@@ -42,7 +49,11 @@ export default class Cart extends Component {
                     cartItems.reduce((a, c) => a + c.price * c.count, 0)
                   )}
                 </div>
-                <button className='button primary'>Proceed</button>
+                <button
+                  className='button primary'
+                  onClick={() => this.setState({ showCheckout: true })}>
+                  Proceed
+                </button>
               </div>
             </div>
           )}
